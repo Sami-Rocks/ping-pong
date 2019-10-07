@@ -19,6 +19,8 @@ def paddle(position, ball_width=5):
     return paddle
 
 
+
+
 paddle_a = paddle(-350)
 paddle_b = paddle(350)
 ball = paddle(0, 1)
@@ -59,6 +61,22 @@ while True:
     if ball.ycor()>290:
         ball.sety(290)
         ball.dy *= -1
-    if ball.ycor()<290:
+    if ball.ycor()< -290:
         ball.sety(-290)
         ball.dy *= -1
+
+    if ball.xcor() > 390:
+        ball.goto(0,0)
+        ball.dx *= -1
+    if ball.xcor() < -390:
+        ball.goto(0,0)
+        ball.dx *= -1
+    
+
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
+        ball.setx(-340)
+        ball.dx *= -1
